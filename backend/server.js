@@ -3,11 +3,17 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
+const helmet = require('helmet');
+const compression = require('compression');
 require('dotenv').config(); // Loads secret keys from .env file
 
 const app = express();
 
 // Middleware: allows our server to understand JSON and talk to frontend
+app.use(helmet({
+  contentSecurityPolicy: false, // Turn off CSP for simpler development (React-friendly)
+}));
+app.use(compression());
 app.use(cors());
 app.use(express.json());
 
