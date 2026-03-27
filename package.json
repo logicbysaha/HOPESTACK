@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "description": "Unified root for HopeStack MERN app",
   "scripts": {
-    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
-    "build": "cd frontend && npm run build",
-    "start": "cd backend && node server.js",
-    "dev": "concurrently \"cd backend && node server.js\" \"cd frontend && npm start\""
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "node backend/server.js",
+    "dev": "concurrently \"node backend/server.js\" \"cd frontend && npm start\""
   },
-  "devDependencies": {
+  "dependencies": {
     "concurrently": "^8.2.2"
   }
 }
